@@ -1,0 +1,33 @@
+version: '2.4'
+
+services:
+
+  cbr:
+    container_name: cbr
+    mem_limit: 1g
+    build:
+      context: .
+      dockerfile: ./_docker/api/Dockerfile
+    restart: unless-stopped
+    working_dir: /var/www/app/
+    volumes:
+      - .:/var/www/app/
+    depends_on:
+      - cbr_memcached
+      - cbr_rabbitmq
+    links:
+      - cbr_rabbitmq
+      - cbr_memcached
+
+  cbr_memcached:
+    container_name: cbr_memcached
+    image: memcached
+    restart: unless-stopped
+
+  cbr_rabbitmq:
+    container_name: cbr_rabbitmq
+    image: rabbitmq:3.9-management
+    restart: unless-stopped
+    ports:
+      - '5672:5672'
+      - '15672:15672'
