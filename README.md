@@ -21,10 +21,12 @@
     make
     ```
 
-4. После инициализации вы должны увидеть список запущенных контейнеров
+4. После инициализации вы должны увидеть успешное прохождение тестов и список запущенных контейнеров
 
     **Пример:**
     ```shell
+   OK (10 tests, 57 assertions)
+   
     CONTAINER ID   IMAGE                     COMMAND                  CREATED          STATUS          PORTS                                                                                                                                                 NAMES
     9e19dd144fdc   ffin_test_task_cbr        "docker-entrypoint.sh"   52 minutes ago   Up 52 minutes   9000/tcp                                                                                                                                              cbr
     d7a2c106cb64   memcached                 "docker-entrypoint.s…"   53 minutes ago   Up 53 minutes   11211/tcp                                                                                                                                             cbr_memcached
