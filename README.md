@@ -6,6 +6,7 @@
 - Docker
 - Docker-compose
 - Make
+- Git
 
 ## Установка
 
@@ -79,9 +80,9 @@ Usage:
    
    Пример:
    ```shell
-   $ ./bin/dconsole messenger:consume async -vv
+   $ ./bin/dconsole messenger:consume async_tasks -vv
 
-   [OK] Consuming messages from transport "async".
+   [OK] Consuming messages from transport "async_tasks".
    
    // The worker will automatically exit once it has received a stop signal via   
    // the messenger:stop-workers command.

@@ -5,18 +5,21 @@ namespace App\Tests\Component\CurrencyRate;
 use App\Component\CbrSoapClient\CbrSoapClient;
 use App\Component\CurrencyRate\CurrencyRate;
 use DateTime;
+use PHPUnit\Framework\TestCase;
 use Psr\Cache\InvalidArgumentException;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-final class CurrencyRateTest extends KernelTestCase
+/**
+ * Unit тест для проверки корректности подсчета курсов указанной пары валют
+ */
+final class CurrencyRateTest extends TestCase
 {
     public static function getByProvider(): array
     {
         return [
-            ['2023-09-05', 'JPY', 'USD', 178.1476, 182.8144, '-2.5528%'],
-            ['2023-09-05', 'USD', 'RUB', 0.01027, 0.01039, '-1.0889%'],
-            ['2023-09-05', 'RUB', 'USD', 97.35, 96.29, '+1.1008%'],
-            ['2023-09-05', 'RUB', 'RUB', 1.0, 1.0, '0%'],
+            ['2023-09-05', 'JPY', 'USD', 178.1476, 182.8144, '-2.5528%'], // кросскурс USD/JPY
+            ['2023-09-05', 'USD', 'RUB', 0.01027, 0.01039, '-1.0889%'], // курс RUB/USD
+            ['2023-09-05', 'RUB', 'USD', 97.35, 96.29, '+1.1008%'], // курс USD/RUB
+            ['2023-09-05', 'RUB', 'RUB', 1.0, 1.0, '0%'], // Курс RUB/RUB :D
         ];
     }
 

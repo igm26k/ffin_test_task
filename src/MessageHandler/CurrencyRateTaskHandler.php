@@ -4,6 +4,7 @@ namespace App\MessageHandler;
 
 use App\Component\CbrSoapClient\CbrSoapClient;
 use App\Message\CurrencyRateTask;
+use Psr\Cache\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -19,6 +20,9 @@ class CurrencyRateTaskHandler
 
     /**
      * @param CurrencyRateTask $task
+     *
+     * @throws InvalidArgumentException
+     * @throws \Throwable
      */
     public function __invoke(CurrencyRateTask $task)
     {

@@ -2,6 +2,9 @@
 
 namespace App\Component\CbrSoapClient;
 
+/**
+ * Фейковый класс для подсветки свойств возвращаемых объектов ValuteCursOnDate
+ */
 class CurrencyRateEntity
 {
     public string $Vname;     // Название валюты

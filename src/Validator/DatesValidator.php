@@ -8,6 +8,9 @@ use Exception;
 class DatesValidator
 {
     /**
+     * Проверка, что переданы валидные форматы $date и $maxDate
+     * Проверка, что $date не больше, чем $maxDate
+     *
      * @param string $date
      * @param string $maxDate
      *

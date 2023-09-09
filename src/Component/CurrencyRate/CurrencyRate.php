@@ -8,6 +8,9 @@ use DateTime;
 use Exception;
 use Psr\Cache\InvalidArgumentException;
 
+/**
+ * Класс для получения курсов по указанным парам валют за определенную дату
+ */
 class CurrencyRate
 {
     public function __construct(
@@ -17,9 +20,11 @@ class CurrencyRate
     }
 
     /**
-     * @param string $date
-     * @param string $currencyCode
-     * @param string $baseCurrencyCode
+     * Получение курса указанной пары валют за заданную дату
+     *
+     * @param string $date             Дата в любом валидном формате
+     * @param string $currencyCode     Символьный код валюты
+     * @param string $baseCurrencyCode Символьный код базовой валюты
      *
      * @return array
      * @throws InvalidArgumentException
@@ -56,7 +61,8 @@ class CurrencyRate
     }
 
     /**
-     * Округление до 4 значимых цифр
+     * Округление до 4 значимых цифр, если число меньше 0.1
+     * в противном случае используется обычное округление до 4 знаком после запятой
      *
      * @param float|int $number
      *
@@ -70,6 +76,8 @@ class CurrencyRate
     }
 
     /**
+     * Получение курсов валют за указанную дату и вычисление курса, кросскурса для указанной пары валют
+     *
      * @param DateTime $date
      * @param string   $currencyCode
      * @param string   $baseCurrencyCode

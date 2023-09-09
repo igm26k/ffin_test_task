@@ -5,6 +5,9 @@ namespace App\Tests\Component\CbrSoapClient;
 use App\Component\CbrSoapClient\CbrSoapClient;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Интеграционные тесты для CbrSoapClient
+ */
 class CbrSoapClientTest extends KernelTestCase
 {
     private CbrSoapClient $cbrSoapClient;
@@ -18,6 +21,12 @@ class CbrSoapClientTest extends KernelTestCase
 
     }
 
+    /**
+     * Проверка получения курсов валют за указанную дату
+     *
+     * @return void
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
     public function testGetCursOnDate()
     {
         $date = (new \DateTime('2004-05-02'));
@@ -37,6 +46,12 @@ class CbrSoapClientTest extends KernelTestCase
         $this->assertIsNumeric($result[0]->VunitRate);
     }
 
+    /**
+     * Проверка получения последней даты обновления курсов
+     *
+     * @return void
+     * @throws \Psr\Cache\InvalidArgumentException
+     */
     public function testGetLatestDateTime()
     {
         $result = $this->cbrSoapClient->getLatestDateTime();

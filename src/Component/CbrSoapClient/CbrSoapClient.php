@@ -12,6 +12,9 @@ use Symfony\Component\Cache\Adapter\MemcachedAdapter;
 use Symfony\Component\Cache\Exception\CacheException;
 use Symfony\Contracts\Cache\ItemInterface;
 
+/**
+ * SOAP клиент для cbr.ru
+ */
 class CbrSoapClient
 {
     private string           $cbrUri  = 'http://web.cbr.ru/';

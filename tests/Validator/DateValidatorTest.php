@@ -5,8 +5,17 @@ namespace App\Tests\Validator;
 use App\Validator\DatesValidator;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Unit тесты валидатора дат
+ */
 class DateValidatorTest extends TestCase
 {
+    /**
+     * Переданы корректные даты
+     *
+     * @return void
+     * @throws \Exception
+     */
     public function testValidateDate()
     {
         $dateObj    = new \DateTime();
@@ -19,6 +28,12 @@ class DateValidatorTest extends TestCase
         $this->assertInstanceOf(\DateTime::class, $successResult);
     }
 
+    /**
+     * $date > $maxDate
+     *
+     * @return void
+     * @throws \Exception
+     */
     public function testValidateDateGreaterThanLastDate()
     {
         $date    = (new \DateTime())->modify('+2 day')->format('Y-m-d');
@@ -28,6 +43,12 @@ class DateValidatorTest extends TestCase
         DatesValidator::validate($date, $maxDate);
     }
 
+    /**
+     * Некорректный формат $date
+     *
+     * @return void
+     * @throws \Exception
+     */
     public function testValidateDateWrongDate()
     {
         $date    = 'omgwtf';
@@ -37,6 +58,12 @@ class DateValidatorTest extends TestCase
         DatesValidator::validate($date, $maxDate);
     }
 
+    /**
+     * Некорректный формат $maxDate
+     *
+     * @return void
+     * @throws \Exception
+     */
     public function testValidateDateWrongLastDate()
     {
         $date    = (new \DateTime())->modify('+1 day')->format('Y-m-d');
