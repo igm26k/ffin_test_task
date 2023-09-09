@@ -77,7 +77,7 @@ Usage:
 1. Сначала необходимо запустить обработчик сообщений в брокере:
 
    ```shell
-   bin/dconsole messenger:consume async -vv
+   bin/dconsole messenger:consume async_tasks -vv
    ```
    
    Пример:
